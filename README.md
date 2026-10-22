@@ -2,14 +2,13 @@
 
 > **Read-only archive of released versions of ernestdefoe/brainstorm.** Not for installation: use [Packagist](https://packagist.org/packages/ernestdefoe/brainstorm) or the [upstream repository](https://github.com/ernestdefoe/brainstorm).
 
-**2** versions archived · Latest: [`1.0.1`](https://github.com/flarchive/ernestdefoe-brainstorm/tree/archive/v1.0.1) · License: `MIT` · Flarum: `^2.0`
+**0** versions archived · Latest: [`1.0.2`](https://github.com/flarchive/ernestdefoe-brainstorm/tree/archive/v1.0.2) · License: `MIT` · Flarum: `^2.0`
 
 ## Archived Versions
 
 | Version | Released | Flarum | Source |
 |---|---|---|---|
-| `1.0.0` | 2026-10-20 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-brainstorm/tree/archive/v1.0.0) |
-| `1.0.1` | 2026-10-20 | `^2.0` | [Browse](https://github.com/flarchive/ernestdefoe-brainstorm/tree/archive/v1.0.1) |
+| — | — | — | — |
 
 Catalog entry: [packages/ernestdefoe-brainstorm.json](https://github.com/flarchive/archive-index/blob/main/packages/ernestdefoe-brainstorm.json)
 
