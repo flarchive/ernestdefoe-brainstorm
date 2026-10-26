@@ -1,0 +1,947 @@
+// Brainstorm. Built on the forum's own colour variables, so it follows the
+// theme, its primary colour and dark mode without settings of its own.
+
+@g-gap: 12px;
+@g-radius: 10px;
+
+.BrainstormChip {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  vertical-align: middle;
+  background: var(--control-bg);
+  color: var(--control-color);
+
+  &--draft {
+    background: var(--alert-bg);
+    color: var(--alert-color);
+  }
+}
+
+.BrainstormEmpty,
+.BrainstormBoard-empty {
+  color: var(--muted-color);
+  text-align: center;
+  padding: 24px 0;
+}
+
+// The facts line under a quiz's title.
+.BrainstormFacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 13px;
+  color: var(--muted-color);
+
+  > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+.BrainstormFacts-reward {
+  color: var(--text-color);
+  font-weight: 600;
+}
+.BrainstormBadgeIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+// A quiz: in the list, in a post, and on its own page.
+.BrainstormCard {
+  border: 1px solid var(--control-bg);
+  border-radius: @g-radius;
+  background: var(--body-bg);
+  padding: 16px;
+  margin-bottom: @g-gap;
+
+  &--embedded {
+    margin: 10px 0;
+    max-width: 680px;
+  }
+}
+.BrainstormEmbed {
+  display: block;
+}
+.BrainstormCard-header {
+  display: flex;
+  gap: @g-gap;
+  align-items: flex-start;
+}
+.BrainstormCard-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--primary-color);
+  color: var(--body-bg);
+  font-size: 18px;
+}
+.BrainstormCard-heading {
+  min-width: 0;
+  flex: 1;
+}
+.BrainstormCard-title {
+  margin: 0 0 4px;
+  font-size: 16px;
+  line-height: 1.3;
+
+  a {
+    color: var(--heading-color);
+  }
+}
+.BrainstormCard-description {
+  margin-top: @g-gap;
+  font-size: 14px;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+.BrainstormCard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: @g-gap;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.BrainstormCard-standing {
+  font-size: 13px;
+  color: var(--muted-color);
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+
+  &.is-passed {
+    color: var(--control-success-color);
+    font-weight: 600;
+  }
+}
+.BrainstormCard-note {
+  font-size: 13px;
+  color: var(--muted-color);
+}
+
+// Playing.
+.BrainstormPlayer {
+  margin-top: 14px;
+
+  &--error {
+    text-align: center;
+    color: var(--muted-color);
+  }
+}
+.BrainstormPlayer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--muted-color);
+}
+.BrainstormPlayer-count {
+  font-weight: 600;
+}
+.BrainstormPlayer-timer {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--text-color);
+
+  &.is-low {
+    color: var(--error-color);
+  }
+}
+.BrainstormPlayer-progress {
+  flex: 1 0 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--control-bg);
+  overflow: hidden;
+
+  > span {
+    display: block;
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.2s;
+  }
+}
+.BrainstormQuestion-body {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: @g-gap;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+.BrainstormQuestion-image {
+  display: block;
+  max-width: 100%;
+  max-height: 360px;
+  border-radius: 8px;
+  margin: 0 0 @g-gap;
+}
+.BrainstormQuestion-points {
+  font-size: 12px;
+  color: var(--muted-color);
+  margin: -4px 0 10px;
+}
+.BrainstormOptions {
+  display: grid;
+  gap: 8px;
+}
+.BrainstormOptions-hint {
+  font-size: 13px;
+  color: var(--muted-color);
+  margin: 0;
+}
+.BrainstormOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 2px solid var(--control-bg);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: normal;
+  transition: border-color 0.15s, background 0.15s;
+
+  // The real input stays in the page for keyboards and screen readers.
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  &:hover {
+    background: var(--control-bg);
+  }
+  &:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+  &.is-chosen {
+    border-color: var(--primary-color);
+    background: var(--control-bg);
+  }
+}
+.BrainstormOption-mark {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--muted-color);
+  border-radius: 50%;
+
+  [type='checkbox'] + & {
+    border-radius: 4px;
+  }
+  .is-chosen & {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    box-shadow: inset 0 0 0 3px var(--body-bg);
+  }
+}
+.BrainstormOption-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.BrainstormPlayer-text {
+  max-width: 420px;
+}
+.BrainstormPlayer-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: @g-gap;
+  margin-top: 16px;
+}
+.BrainstormPlayer-review {
+  padding: 8px 0;
+}
+.BrainstormDots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.BrainstormDot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--control-bg);
+  background: var(--body-bg);
+  color: var(--muted-color);
+  font-size: 12px;
+  cursor: pointer;
+
+  &.is-answered {
+    background: var(--control-bg);
+    color: var(--text-color);
+  }
+  &.is-current {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+}
+
+// A marked attempt.
+.BrainstormResult-summary {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.BrainstormResult-ring {
+  --brainstorm-ring: 0%;
+  --brainstorm-tone: var(--error-color);
+  flex: none;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--brainstorm-tone) var(--brainstorm-ring), var(--control-bg) 0);
+
+  > span {
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: var(--body-bg);
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .is-passed & {
+    --brainstorm-tone: var(--control-success-color);
+  }
+}
+.BrainstormResult-text {
+  flex: 1;
+  min-width: 220px;
+
+  p {
+    margin: 0 0 4px;
+  }
+}
+.BrainstormResult-headline {
+  margin: 0 0 6px;
+  font-size: 18px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  .is-passed & .icon {
+    color: var(--control-success-color);
+  }
+  .is-failed & .icon {
+    color: var(--error-color);
+  }
+}
+.BrainstormResult-note {
+  font-size: 13px;
+  color: var(--muted-color);
+}
+.BrainstormResult-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.BrainstormReview {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+}
+.BrainstormReview-item {
+  border-left: 3px solid var(--error-color);
+  padding: 4px 0 4px 14px;
+  margin-bottom: 18px;
+
+  &.is-right {
+    border-color: var(--control-success-color);
+  }
+  &.is-partial {
+    border-color: var(--alert-color);
+  }
+}
+.BrainstormReview-head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted-color);
+  margin-bottom: 4px;
+}
+.BrainstormReview-number {
+  font-weight: 700;
+}
+.BrainstormReview-state {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.BrainstormReview-body {
+  font-weight: 600;
+  margin-bottom: 8px;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+.BrainstormReview-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.BrainstormReview-option {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 3px 0;
+  color: var(--muted-color);
+
+  &.is-chosen {
+    color: var(--text-color);
+  }
+  &.is-correct {
+    color: var(--control-success-color);
+    font-weight: 600;
+  }
+  &.is-wrong {
+    color: var(--error-color);
+  }
+}
+.BrainstormReview-yours {
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--control-bg);
+  color: var(--control-color);
+}
+.BrainstormReview-explanation {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--control-bg);
+  font-size: 14px;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Leaderboards.
+.BrainstormBoard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.BrainstormBoard-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--control-bg);
+
+  &.is-me {
+    font-weight: 700;
+  }
+  .BrainstormPerson {
+    flex: 1;
+    min-width: 0;
+  }
+}
+.BrainstormBoard-rank {
+  width: 24px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--muted-color);
+
+  .is-top-1 & {
+    color: #d4a017;
+  }
+  .is-top-2 & {
+    color: #9aa4ad;
+  }
+  .is-top-3 & {
+    color: #b8733e;
+  }
+}
+.BrainstormBoard-value {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.BrainstormBoard-extra {
+  min-width: 56px;
+  text-align: right;
+  font-size: 12px;
+  color: var(--muted-color);
+  font-variant-numeric: tabular-nums;
+}
+.BrainstormBoard-me {
+  font-size: 13px;
+  margin: 8px 0 0;
+  color: var(--muted-color);
+}
+.BrainstormPerson {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color);
+
+  .Avatar {
+    --size: 24px;
+    flex: none;
+  }
+}
+.BrainstormPerson-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Pages.
+.BrainstormIndexPage-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: @g-gap;
+  margin-bottom: 14px;
+}
+.BrainstormIndexPage-title,
+.BrainstormQuizPage-title {
+  margin: 0;
+  font-size: 22px;
+}
+.BrainstormIndexPage-toolbar {
+  display: flex;
+  gap: @g-gap;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.BrainstormIndexPage-search {
+  flex: 1;
+  min-width: 160px;
+  max-width: 280px;
+  margin-left: auto;
+}
+.BrainstormTabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+
+  .Button.active {
+    background: var(--control-bg);
+    color: var(--text-color);
+    font-weight: 700;
+  }
+}
+.BrainstormIndexPage-body,
+.BrainstormQuizPage-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 24px;
+  align-items: start;
+
+  @media @phone {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.BrainstormIndexPage-board,
+.BrainstormQuizPage-side {
+  h3 {
+    margin-top: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--muted-color);
+  }
+}
+.BrainstormIndexPage-more {
+  display: block;
+  margin: 0 auto;
+}
+.BrainstormQuizPage-back {
+  padding-left: 0;
+}
+.BrainstormQuizPage-title {
+  margin-bottom: 6px;
+}
+.BrainstormQuizPage-byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted-color);
+  margin-bottom: 8px;
+}
+.BrainstormQuizPage-window {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 8px 0 0;
+}
+.BrainstormQuizPage-description {
+  margin: 14px 0;
+}
+.BrainstormQuizPage-tools {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+.BrainstormQuizPage-cta {
+  padding: 14px 16px;
+  border-radius: @g-radius;
+  background: var(--control-bg);
+}
+
+// The editor.
+.BrainstormEditor-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: @g-gap;
+}
+.BrainstormEditor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  align-items: start;
+
+  @media @phone {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.BrainstormEditor-section {
+  font-size: 15px;
+  margin: 20px 0 10px;
+}
+.BrainstormEditor-questions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.BrainstormEditor-question {
+  border: 1px solid var(--control-bg);
+  border-radius: @g-radius;
+  background: var(--body-bg);
+  margin-bottom: @g-gap;
+
+  // Folded to their heads while a question is being dragged.
+  .is-sorting & .BrainstormEditor-questionBody {
+    display: none;
+  }
+}
+.BrainstormEditor-questionHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--control-bg);
+
+  .Select {
+    width: auto;
+  }
+}
+.BrainstormEditor-handle {
+  cursor: grab;
+  touch-action: none;
+  padding: 4px;
+  color: var(--muted-color);
+
+  .is-sorting & {
+    cursor: grabbing;
+  }
+}
+.BrainstormEditor-number {
+  font-weight: 700;
+}
+.BrainstormEditor-summary {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--muted-color);
+}
+.BrainstormEditor-questionBody {
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+.BrainstormEditor-image {
+  display: flex;
+  gap: 8px;
+}
+.BrainstormEditor-preview {
+  max-width: 200px;
+  max-height: 120px;
+  border-radius: 6px;
+}
+.BrainstormEditor-options .helpText {
+  margin: 0 0 6px;
+}
+.BrainstormEditor-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+
+  > input[type='radio'],
+  > input[type='checkbox'] {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--control-success-color);
+  }
+  &.is-correct .FormControl {
+    border-color: var(--control-success-color);
+  }
+}
+.BrainstormEditor-acceptIcon {
+  color: var(--control-success-color);
+  width: 18px;
+}
+.BrainstormEditor-boolean {
+  display: flex;
+  gap: 8px;
+}
+.BrainstormEditor-points {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: normal;
+
+  .FormControl {
+    width: 80px;
+  }
+}
+.BrainstormEditor-explanationLabel {
+  font-size: 13px;
+  margin-bottom: -4px;
+}
+.BrainstormEditor-add {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.BrainstormEditor-settings {
+  .Form-group {
+    margin-bottom: 14px;
+  }
+  .Switch {
+    margin-bottom: 10px;
+  }
+  label + .FormControl + label {
+    margin-top: 8px;
+  }
+}
+.BrainstormEditor-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .FormControl {
+    width: 72px;
+  }
+}
+.BrainstormEditor-rewards {
+  border: 1px solid var(--control-bg);
+  border-radius: 8px;
+  padding: 10px 12px 0;
+  margin: 0 0 14px;
+
+  legend {
+    font-weight: 700;
+    padding: 0 4px;
+  }
+}
+.BrainstormEditor-error {
+  color: var(--error-color);
+  font-weight: 600;
+}
+.BrainstormEditor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+// Staff results.
+.BrainstormResults {
+  h4 {
+    font-size: 13px;
+    margin: 0 0 8px;
+  }
+  section + section {
+    margin-top: 18px;
+  }
+}
+.BrainstormResults-questions,
+.BrainstormResults-attempts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--control-bg);
+  }
+}
+.BrainstormResults-question {
+  flex: 1 0 100%;
+}
+.BrainstormResults-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--control-bg);
+  overflow: hidden;
+
+  > span {
+    display: block;
+    height: 100%;
+    background: var(--primary-color);
+  }
+}
+.BrainstormResults-value {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.BrainstormResults-meta {
+  flex: 1 0 100%;
+  color: var(--muted-color);
+  font-size: 12px;
+}
+.BrainstormResults-attempts {
+  .BrainstormPerson {
+    flex: 1;
+    min-width: 0;
+  }
+  .is-passed .BrainstormResults-value {
+    color: var(--control-success-color);
+  }
+}
+
+// The composer's quiz picker.
+.BrainstormPicker-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+.BrainstormPicker-item {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .Button-label {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.BrainstormPicker-meta {
+  font-size: 12px;
+  color: var(--muted-color);
+}
+
+// Widgets.
+.BrainstormWidget-heading {
+  margin-top: 0;
+}
+.BrainstormWidget-latest {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+  }
+}
+.BrainstormWidget-meta {
+  font-size: 12px;
+  color: var(--muted-color);
+}
+.BrainstormWidget-more {
+  padding-left: 0;
+}
+
+// Inside a post the card sits in .Post-body, whose headings, links and lists
+// are styled for prose. The card keeps its own look there.
+.Post-body .BrainstormEmbed {
+  margin: 10px 0;
+
+  .BrainstormCard-title {
+    font-size: 16px;
+    margin: 0 0 4px;
+  }
+  // Posts underline links with a border; the card's links are its own.
+  a {
+    text-decoration: none;
+    border-bottom: 0;
+  }
+  .BrainstormReview,
+  .BrainstormReview-options {
+    list-style: none;
+    padding: 0;
+  }
+  .BrainstormReview-options {
+    margin: 0;
+  }
+  .BrainstormResult-text p,
+  .BrainstormOptions-hint,
+  .BrainstormQuestion-points {
+    margin-top: 0;
+  }
+}
+
+// The composer header pill, matching FoF Polls' "Add Poll" so the two sit side by side.
+.ComposerBody-quiz {
+  margin-right: 15px;
+
+  .QuizLabel {
+    font-size: 85%;
+    font-weight: 600;
+    display: inline-block;
+    padding: 0.1em 0.5em;
+    border-radius: var(--border-radius);
+    border: 1px dotted var(--muted-color);
+    color: var(--muted-color);
+    text-transform: none;
+    vertical-align: bottom;
+  }
+
+  &:hover .QuizLabel,
+  &:focus-visible .QuizLabel {
+    border-style: solid;
+    border-color: var(--primary-color);
+    color: var(--control-color);
+  }
+}
