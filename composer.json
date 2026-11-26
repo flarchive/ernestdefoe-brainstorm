@@ -1,0 +1,113 @@
+{
+    "name": "ernestdefoe/brainstorm",
+    "description": "Brainstorm — quizzes and knowledge tests for Flarum. Single and multiple choice, true/false, typed answers and image questions; timers, pass marks and attempt limits enforced on the server; leaderboards that respect privacy; quizzes playable inside a post; rewards with FoF Badges and FoF Gamification.",
+    "keywords": [
+        "flarum",
+        "flarum-extension",
+        "quiz",
+        "quizzes",
+        "trivia",
+        "test",
+        "gamification",
+        "leaderboard"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ernest Defoe",
+            "email": "ernestdefoe@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/ernestdefoe/brainstorm",
+    "support": {
+        "issues": "https://github.com/ernestdefoe/brainstorm/issues",
+        "source": "https://github.com/ernestdefoe/brainstorm"
+    },
+    "funding": [
+        {
+            "type": "other",
+            "url": "https://buymeacoffee.com/ernestdefoe"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "flarum/core": "^2.0"
+    },
+    "conflict": {
+        "ernestdefoe/buzz": "<1.1.6",
+        "ernestdefoe/syllabus": "<1.5.0"
+    },
+    "suggest": {
+        "fof/badges": "Award a badge for passing a quiz, and badge triggers for quizzes passed and perfect scores.",
+        "fof/gamification": "Award points for passing a quiz.",
+        "fof/upload": "Pick question images from the media library.",
+        "fof/forum-widgets-core": "Place the quizzes widget in FoF Forum Widgets' layout.",
+        "flarum/mentions": "Mentions in quiz descriptions and questions are rendered in one query per kind.",
+        "flarum/tags": "Tag mentions in quiz descriptions and questions.",
+        "ernestdefoe/onramp": "A \"pass quizzes\" step for Onramp journeys.",
+        "ernestdefoe/page-builder": "The quizzes widget as a Page Builder block.",
+        "ernestdefoe/bespoke": "The quizzes widget in Bespoke's widget zones.",
+        "ernestdefoe/syllabus": "Course-only quizzes: a quiz only members enrolled in a Syllabus course can see and take, and quizzes as Syllabus lessons."
+    },
+    "autoload": {
+        "psr-4": {
+            "ErnestDefoe\\Brainstorm\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ErnestDefoe\\Brainstorm\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Brainstorm",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-graduation-cap",
+                "backgroundColor": "#7c3aed",
+                "color": "#fff"
+            },
+            "optional-dependencies": [
+                "flarum/mentions",
+                "flarum/tags",
+                "fof/badges",
+                "fof/gamification",
+                "fof/upload",
+                "fof/forum-widgets-core",
+                "ernestdefoe/onramp",
+                "ernestdefoe/page-builder",
+                "ernestdefoe/bespoke"
+            ]
+        }
+    },
+    "require-dev": {
+        "ernestdefoe/syllabus": "^1.5",
+        "flarum/mentions": "^2.0",
+        "flarum/phpstan": "^2.0",
+        "flarum/tags": "^2.0",
+        "flarum/testing": "^2.0",
+        "fof/badges": "^2.0",
+        "fof/gamification": "^2.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": [
+            "@test:integration"
+        ],
+        "test:integration": "phpunit -c tests/phpunit.integration.xml",
+        "test:setup": "@php tests/integration/setup.php",
+        "analyse:phpstan": "phpstan analyse"
+    },
+    "scripts-descriptions": {
+        "test": "Runs all tests.",
+        "test:integration": "Runs all integration tests.",
+        "test:setup": "Sets up a database for use with integration tests. Execute this only once.",
+        "analyse:phpstan": "Run static analysis"
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true
+}
